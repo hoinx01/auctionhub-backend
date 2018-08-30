@@ -7,6 +7,8 @@ namespace UserController.Models.Users
 {
     public class AddAccountModel
     {
+        [Required]
+        [MaxLength(20)]
         public string UserName { get; set; }
         [Required]
         [MaxLength(20)]

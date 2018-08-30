@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\AuctionHub.Common\AuctionHub.Common.csproj" />
     <ProjectReference Include="..\..\Common\SrvCornet.Http\SrvCornet.Http.csproj" />
     <ProjectReference Include="..\..\Data\AuctionHub.Data.Mssql\AuctionHub.Data.Mssql.csproj" />
   </ItemGroup>

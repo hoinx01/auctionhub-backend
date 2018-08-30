@@ -5,6 +5,7 @@ namespace AuctionHub.Common.Messages
 {
     public class ErrorMessages
     {
+        public const string REGISTER_EXIST_USERNAME = "Tên đăng nhập đã tồn tại";
         public const string LOGIN_INVALID_USER = "Tài khoản không tồn tại";
         public const string LOGIN_FAILED = "Thông tin đăng nhập không chính xác";
     }

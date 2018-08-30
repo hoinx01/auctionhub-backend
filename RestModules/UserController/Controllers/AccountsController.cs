@@ -30,6 +30,14 @@ namespace UserController.Controllers
         {
             ValidateInputModel();
 
+            var accountFilter = new AccountFilter()
+            {
+                UserName = model.UserName
+            };
+            var accounts = await accountDao.Filter(accountFilter);
+            if (accounts.Count > 0)
+                throw new DomainValidateException(new List<string>() { ErrorMessages.REGISTER_EXIST_USERNAME });
+
             var passwordSalt = "-" + model.UserName + "-AuctionHub-" + model.UserName;
             string passwordHash = StringUtils.ComputeSha256Hash(model.Password + passwordSalt);
 
