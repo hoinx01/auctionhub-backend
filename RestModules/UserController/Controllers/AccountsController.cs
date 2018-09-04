@@ -52,7 +52,7 @@ namespace UserController.Controllers
                 ModifiedAt = DateTime.UtcNow
             };
 
-            var result = await accountDao.InsertAsync(userDto);
+            var result = await accountDao.InsertAsync_EF(userDto);
             var userAccountResponse = GetFromAccount(userDto);
 
             return userAccountResponse;
@@ -69,7 +69,7 @@ namespace UserController.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<AccountModel> Login(LoginModel model)
+        public async Task<AccountModel> Login([FromBody] LoginModel model)
         {
             ValidateInputModel();
 
