@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuctionHub.Common", "Auctio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{4E8E66F4-BC47-4EF4-9130-CE20E51B7C18}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuctionPackage", "AuctionPackage", "{5F48EEE4-03DD-4C5E-9CC5-14AD117D9D3E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Product", "Product", "{5F48EEE4-03DD-4C5E-9CC5-14AD117D9D3E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Modules\AuctionPackage\Domain\Domain.csproj", "{CADEE16B-4DD0-41BF-B348-BC0D65F034FD}"
 EndProject

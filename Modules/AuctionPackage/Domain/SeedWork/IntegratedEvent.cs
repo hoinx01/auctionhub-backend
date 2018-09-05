@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.SeedWork
+namespace Modules.Product.Domain.SeedWork
 {
     public class IntegratedEvent
     {
