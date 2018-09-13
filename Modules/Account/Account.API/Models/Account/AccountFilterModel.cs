@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
 
-namespace UserController.Models.Users
+namespace Modules.Account.API.Models.Users
 {
     public class AccountFilterModel
     {

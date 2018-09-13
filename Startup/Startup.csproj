@@ -12,11 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Common\SrvCornet.Background\SrvCornet.Background.csproj" />
-    <ProjectReference Include="..\Common\SrvCornet.Core\SrvCornet.Core.csproj" />
-    <ProjectReference Include="..\Common\SrvCornet.Http\SrvCornet.Http.csproj" />
-    <ProjectReference Include="..\Data\AuctionHub.Data.Mssql\AuctionHub.Data.Mssql.csproj" />
-    <ProjectReference Include="..\RestModules\UserController\UserController.csproj" />
+    <ProjectReference Include="..\Data\AuctionHub.Data.Mongo\AuctionHub.Data.Mongo.csproj" />
+    <ProjectReference Include="..\Modules\Account\Account.API\Account.API.csproj" />
+    <ProjectReference Include="..\SrvCornet\SrvCornet.Background\SrvCornet.Background.csproj" />
+    <ProjectReference Include="..\SrvCornet\SrvCornet.Dal.Mongo\SrvCornet.Dal.Mongo.csproj" />
+    <ProjectReference Include="..\SrvCornet\SrvCornet.Http\SrvCornet.Http.csproj" />
   </ItemGroup>
 
   <ItemGroup>

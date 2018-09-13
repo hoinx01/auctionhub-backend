@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace UserController.Models.Users
+namespace Modules.Account.API.Models.Users
 {
     public class AddAccountModel
     {

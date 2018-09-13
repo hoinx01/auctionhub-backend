@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UserController.Models.Users
+namespace Modules.Account.API.Models.Users
 {
     public class AccountModel
     {
