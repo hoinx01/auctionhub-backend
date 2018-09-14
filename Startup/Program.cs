@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Iken.Startup
+namespace Application.Startup
 {
     class Program
     {

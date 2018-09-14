@@ -11,7 +11,7 @@ namespace AuctionHub.Data.Mongo.Dao
 {
     public class MdAccountDao : BaseMongoDao<MdAccount>, IMdAccountDao
     {
-        public MdAccountDao(IMongoDbFactory databaseFactory, string collectionName) : base(databaseFactory, "Accounts")
+        public MdAccountDao(IMongoDbFactory databaseFactory) : base(databaseFactory, "Accounts")
         {
             Console.WriteLine("haha");
 
@@ -21,11 +21,11 @@ namespace AuctionHub.Data.Mongo.Dao
             var filterBuilder = Builders<MdAccount>.Filter;
 
             var criterias = new List<FilterDefinition<MdAccount>>();
-            if (string.IsNullOrWhiteSpace(filterModel.Email))
+            if (!string.IsNullOrWhiteSpace(filterModel.Email))
                 criterias.Add(Builders<MdAccount>.Filter.Eq("Email", filterModel.Email));
-            if (string.IsNullOrWhiteSpace(filterModel.PhoneNumber))
+            if (!string.IsNullOrWhiteSpace(filterModel.PhoneNumber))
                 criterias.Add(Builders<MdAccount>.Filter.Eq("PhoneNumber", filterModel.PhoneNumber));
-            if (string.IsNullOrWhiteSpace(filterModel.UserName))
+            if (!string.IsNullOrWhiteSpace(filterModel.UserName))
                 criterias.Add(Builders<MdAccount>.Filter.Eq("UserName", filterModel.UserName));
 
             var filter = filterBuilder.And(criterias);

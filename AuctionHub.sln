@@ -31,11 +31,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SrvCornet.Http", "SrvCornet
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SrvCornet.Utils", "SrvCornet\SrvCornet.Utils\SrvCornet.Utils.csproj", "{ACF3B905-3E18-4362-8137-2FD1ED5D720E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Account.API", "Modules\Account\Account.API\Account.API.csproj", "{69818927-D31C-43EE-9E91-17A17D482980}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Account.API", "Modules\Account\Account.API\Account.API.csproj", "{69818927-D31C-43EE-9E91-17A17D482980}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SrvCornet.Dal.Mongo", "SrvCornet\SrvCornet.Dal.Mongo\SrvCornet.Dal.Mongo.csproj", "{DB8CB1A1-2B2E-4EDA-8F0D-4F5912BE2006}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionHub.Data.Mongo", "Data\AuctionHub.Data.Mongo\AuctionHub.Data.Mongo.csproj", "{4E830197-E888-4E68-BC46-1B1B387F2E72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuctionHub.Data.Mongo", "Data\AuctionHub.Data.Mongo\AuctionHub.Data.Mongo.csproj", "{4E830197-E888-4E68-BC46-1B1B387F2E72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -157,7 +157,7 @@ Global
 		{ACF3B905-3E18-4362-8137-2FD1ED5D720E} = {4C1361D6-3B90-46D6-BA70-BDE0C8E2FDCB}
 		{69818927-D31C-43EE-9E91-17A17D482980} = {AC101F5D-B719-42A3-B213-D9A1E97C7219}
 		{DB8CB1A1-2B2E-4EDA-8F0D-4F5912BE2006} = {4C1361D6-3B90-46D6-BA70-BDE0C8E2FDCB}
-		{4E830197-E888-4E68-BC46-1B1B387F2E72} = {EBEC1A63-9941-4E01-BD90-52DE02B47445}
+		{4E830197-E888-4E68-BC46-1B1B387F2E72} = {4E8E66F4-BC47-4EF4-9130-CE20E51B7C18}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3E649AF8-7EDF-4320-812B-1FFB2C2FC170}
