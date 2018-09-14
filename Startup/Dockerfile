@@ -2,5 +2,5 @@
 WORKDIR /app
 COPY ./ /app
 EXPOSE 5001
-ENTRYPOINT ["dotnet", "Application.Startup.dll"]
+ENTRYPOINT ["dotnet", "Startup.dll"]
 CMD ["profile=live"]
