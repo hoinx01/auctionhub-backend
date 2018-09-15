@@ -1,4 +1,5 @@
 ﻿using Domain.Model.Dto;
+using SrvCornet.Utils;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,6 +15,18 @@ namespace Modules.Product.Domain.Model.Domain
         {
             OptionName = dto.OptionName;
             Value = dto.Value;
+        }
+        public void Update(VariantOptionDto dto)
+        {
+
+        }
+        public void SetValue(string value)
+        {
+            if (StringUtils.Equals(value, Value))
+                return;
+            Value = value;
+            
+
         }
     }
 }
