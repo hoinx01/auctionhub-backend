@@ -4,12 +4,12 @@ using System.Text;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
-using SrvCornet.Core;
+using SrvCornet.Dal.Mongo;
+using AuctionHub.Data.Mongo;
+using AuctionHub.Data.Mongo.Dao.Interfaces;
+using AuctionHub.Data.Mongo.Dao;
 using SrvCornet.Background;
-using AuctionHub.Data.Mssql.Dao.Interfaces;
-using AuctionHub.Data.Mssql.Dao;
-using SrvCornet.Dal.Mssql;
-using AuctionHub.Data.Mssql;
+using SrvCornet.Core;
 
 namespace Startup.Components
 {
@@ -20,8 +20,8 @@ namespace Startup.Components
             /*
              * Register dependency here
              */
-            services.AddSingleton<IDbFactory, DatabaseFactory>();
-            services.AddSingleton<IAccountDao, AccountDao>();
+            services.AddSingleton<IMongoDbFactory, MongoDbFactory>();
+            services.AddSingleton<IMdAccountDao, MdAccountDao>();
 
             RegisterHostedServices(services);
         }

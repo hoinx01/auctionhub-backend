@@ -57,7 +57,7 @@ namespace SrvCornet.Dal.Mssql
                 await dbContext.SaveChangesAsync();
                 return entity;
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 throw;
             }

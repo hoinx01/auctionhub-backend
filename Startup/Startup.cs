@@ -9,7 +9,7 @@ using SrvCornet.Core;
 using SrvCornet.Http;
 using Startup.Components;
 
-namespace Iken.Startup
+namespace Application.Startup
 {
     public class Startup
     {

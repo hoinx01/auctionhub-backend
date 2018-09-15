@@ -1,5 +1,4 @@
-﻿using Domain.SeedWork;
-using Modules.Product.Domain.SeedWork;
+﻿using Modules.Product.Domain.SeedWork;
 using System;
 using System.Collections.Generic;
 using System.Text;

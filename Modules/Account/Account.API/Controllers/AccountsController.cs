@@ -1,26 +1,28 @@
-﻿using UserController.Models.Users;
-using AuctionHub.Data.Mssql.Dao.Interfaces;
-using AuctionHub.Data.Mssql.Dto;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SrvCornet.Http;
 using SrvCornet.Utils;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using AutoMapper;
 using SrvCornet.Http.Exceptions;
 using AuctionHub.Common;
 using AuctionHub.Common.Messages;
+using AuctionHub.Data.Mongo.Dao.Interfaces;
+using Modules.Account.API.Models.Users;
+using AuctionHub.Data.Mongo.Dto;
+using AutoMapper;
+using AuctionHub.Common.Utilities;
+using MongoDB.Bson;
 
-namespace UserController.Controllers
+namespace Modules.Account.Controllers
 {
     [Route("admin/accounts")]
     public class AccountsController : BaseRestController
     {
-        private readonly IAccountDao accountDao;
+        private readonly IMdAccountDao accountDao;
         public AccountsController(
-            IAccountDao userAccountDao
+            IMdAccountDao userAccountDao
         )
         {
             this.accountDao = userAccountDao;
@@ -41,8 +43,9 @@ namespace UserController.Controllers
             var passwordSalt = "-" + model.UserName + "-AuctionHub-" + model.UserName;
             string passwordHash = StringUtils.ComputeSha256Hash(model.Password + passwordSalt);
 
-            var userDto = new Account()
+            var accountDto = new MdAccount()
             {
+                Id = ObjectId.GenerateNewId(),
                 UserName = model.UserName,
                 PasswordSalt = passwordSalt,
                 PasswordHash = passwordHash,
@@ -52,8 +55,8 @@ namespace UserController.Controllers
                 ModifiedAt = DateTime.UtcNow
             };
 
-            var result = await accountDao.InsertAsync_EF(userDto);
-            var userAccountResponse = GetFromAccount(userDto);
+            await accountDao.AddAsync(accountDto);
+            var userAccountResponse = GetFromAccount(accountDto);
 
             return userAccountResponse;
         }
@@ -85,7 +88,7 @@ namespace UserController.Controllers
                 throw new AuthenticationException(ErrorMessages.LOGIN_FAILED);
         }
 
-        private AccountModel GetFromAccount(Account account)
+        private AccountModel GetFromAccount(MdAccount account)
         {
             var accountModel = Mapper.Map<AccountModel>(account);
             return accountModel;

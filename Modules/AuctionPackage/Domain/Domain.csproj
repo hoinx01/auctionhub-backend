@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>Modules.Product.Domain</AssemblyName>
+    <RootNamespace>Modules.Product.Domain</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\SrvCornet\SrvCornet.Utils\SrvCornet.Utils.csproj" />
+  </ItemGroup>
 
 </Project>
