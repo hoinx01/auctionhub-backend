@@ -9,8 +9,7 @@ namespace UserController.Models.Users
     {
         [MaxLength(255)]
         [Required]
-        public string LoginName { get; set; }
-        [MaxLength(20)]
+        public string UserName { get; set; }
         [Required]
         public string Password { get; set; }
     }

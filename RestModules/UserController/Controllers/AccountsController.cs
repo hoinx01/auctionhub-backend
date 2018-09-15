@@ -73,7 +73,7 @@ namespace UserController.Controllers
         {
             ValidateInputModel();
 
-            var accounts = await accountDao.GetForLogin(model.LoginName);
+            var accounts = await accountDao.GetForLogin(model.UserName);
             if (accounts.Count == 0)
                 throw new NotFoundException(ErrorMessages.LOGIN_INVALID_USER);
             var account = accounts[0];
