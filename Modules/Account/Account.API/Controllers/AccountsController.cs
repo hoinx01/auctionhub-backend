@@ -38,7 +38,7 @@ namespace Modules.Account.Controllers
             };
             var accounts = await accountDao.Filter(accountFilter);
             if (accounts.Count > 0)
-                throw new DomainValidateException(new List<string>() { ErrorMessages.REGISTER_EXIST_USERNAME });
+                throw new DomainValidateException(new List<string>() { AccountErrorMessages.REGISTER_EXIST_USERNAME });
 
             var passwordSalt = "-" + model.UserName + "-AuctionHub-" + model.UserName;
             string passwordHash = StringUtils.ComputeSha256Hash(model.Password + passwordSalt);
@@ -78,14 +78,14 @@ namespace Modules.Account.Controllers
 
             var accounts = await accountDao.GetForLogin(model.UserName);
             if (accounts.Count == 0)
-                throw new NotFoundException(ErrorMessages.LOGIN_INVALID_USER);
+                throw new NotFoundException(AccountErrorMessages.LOGIN_INVALID_USER);
             var account = accounts[0];
 
             var passwordHash = StringUtils.ComputeSha256Hash(model.Password + account.PasswordSalt);
             if (passwordHash.Equals(account.PasswordHash))
                 return GetFromAccount(account);
             else
-                throw new AuthenticationException(ErrorMessages.LOGIN_FAILED);
+                throw new AuthenticationException(AccountErrorMessages.LOGIN_FAILED);
         }
 
         private AccountModel GetFromAccount(MdAccount account)

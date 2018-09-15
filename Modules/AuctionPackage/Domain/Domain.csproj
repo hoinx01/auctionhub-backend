@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\AuctionHub.Common\AuctionHub.Common.csproj" />
+    <ProjectReference Include="..\..\..\SrvCornet\SrvCornet.Http\SrvCornet.Http.csproj" />
     <ProjectReference Include="..\..\..\SrvCornet\SrvCornet.Utils\SrvCornet.Utils.csproj" />
   </ItemGroup>
 

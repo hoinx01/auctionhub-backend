@@ -18,5 +18,15 @@ namespace Modules.Product.Domain.SeedWork
             };
             Events.Add(integratedEvent);
         }
+        public void AddIntegratedEvent(string name, string target)
+        {
+            Events = Events ?? new List<IntegratedEvent>();
+            var integratedEvent = new IntegratedEvent()
+            {
+                Name = name,
+                Target = target
+            };
+            Events.Add(integratedEvent);
+        }
     }
 }
