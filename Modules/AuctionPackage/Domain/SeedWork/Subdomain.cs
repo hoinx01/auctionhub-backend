@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Modules.Product.Domain.SeedWork
 {
-    public abstract class Subdomain : Entity
+    public abstract class Subdomain<T> : Entity where T : AggregateRoot
     {
-        protected AggregateRoot Root { get; set; }
+        protected T Root { get; set; }
     }
 }

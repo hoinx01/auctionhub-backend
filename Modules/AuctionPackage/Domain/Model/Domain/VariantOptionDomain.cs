@@ -1,4 +1,5 @@
-﻿using Domain.Model.Dto;
+﻿using Modules.Product.Domain.Model.Dto;
+using Modules.Product.Domain.SeedWork;
 using SrvCornet.Utils;
 using System;
 using System.Collections.Generic;
@@ -25,8 +26,6 @@ namespace Modules.Product.Domain.Model.Domain
             if (StringUtils.Equals(value, Value))
                 return;
             Value = value;
-            
-
         }
     }
 }

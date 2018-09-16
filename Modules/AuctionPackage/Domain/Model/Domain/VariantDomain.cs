@@ -12,17 +12,17 @@ using SrvCornet.Utils;
 
 namespace Modules.Product.Domain.Model.Domain
 {
-    public class VariantDomain : Subdomain
+    public class VariantDomain : Subdomain<ProductDomain>
     {
         public string Code { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal BasePrice { get; set; }
-        public List<VariantOptionDomain> OptionValues { get; set; }
+        public List<VariantOptionDomain> Options { get; set; }
         public List<ImageDomain> Images { get; set; }
         public string Status { get; set; }
 
-        protected VariantDomain(ProductDomain root, VariantDto dto)
+        public VariantDomain(ProductDomain root, VariantDto dto)
         {
             Root = root;
             Code = dto.Code;
@@ -30,15 +30,17 @@ namespace Modules.Product.Domain.Model.Domain
             Description = dto.Description;
             BasePrice = dto.BasePrice;
             Status = VariantStatus.ACTIVE;
+            SetOptions(dto.Options);
             SetImages(dto.Images);
         }
 
-        protected void Update(VariantDto dto)
+        public void Update(VariantDto dto)
         {
             SetCode(dto.Code);
             SetName(dto.Name);
             SetDescription(dto.Description);
             SetBasePrice(dto.BasePrice);
+            SetOptions(dto.Options);
             SetImages(dto.Images);
         }
         private void SetCode(string code)
@@ -71,7 +73,50 @@ namespace Modules.Product.Domain.Model.Domain
         }
         private void SetOptions(List<VariantOptionDto> options)
         {
+            Options = Options ?? new List<VariantOptionDomain>();
+            var currentOptionNames = Options.Select(s => s.OptionName).ToList();
+            var targetOptionNames = options.Select(s => s.OptionName).ToList();
 
+            bool optionChange = false;
+
+            var removedOptionNames = currentOptionNames.Where(w => !targetOptionNames.Contains(w)).ToList();
+            foreach (var removedOptionName in removedOptionNames)
+            {
+                optionChange = true;
+                Options.RemoveAll(r => r.OptionName.Equals(removedOptionName));
+            }
+                
+
+            var targetOptions = new List<VariantOptionDomain>();
+
+            foreach(var targetOption in options)
+            {
+                var productOption = Root.Options.Where(o => o.Name.Equals(targetOption.OptionName)).SingleOrDefault();
+                if (productOption == null)
+                    throw new NotFoundException(string.Format(ProductErrorMessages.PRODUCT_OPTION_NOT_FOUND, targetOption.OptionName));
+                if (currentOptionNames.Contains(targetOption.OptionName))
+                {
+                    var currentOption = Options.Where(w => w.OptionName.Equals(targetOption.OptionName)).SingleOrDefault();
+                    if (!StringUtils.Equals(currentOption.Value, targetOption.Value))
+                    {
+                        optionChange = true;
+                        currentOption.Value = targetOption.Value;
+                        targetOptions.Add(currentOption);
+                    }
+                    else
+                        continue;
+                }
+                else
+                {
+                    optionChange = true;
+                    var option = new VariantOptionDomain(targetOption);
+                    targetOptions.Add(option);
+                }
+            }
+            Options = targetOptions;
+
+            if (optionChange)
+                Modify();
         }
         private void SetImages(List<ImageDto> imageDtos)
         {
@@ -121,7 +166,7 @@ namespace Modules.Product.Domain.Model.Domain
         {
             var imageDomain = Images.Where(s => s.Id.Equals(dto.Id)).SingleOrDefault();
             if (imageDomain == null)
-                throw new NotFoundException(string.Format(ProductErrorMessages.IMAGE_NOT_FOUND, dto.Id));
+                throw new NotFoundException(string.Format(ProductErrorMessages.PRODUCT_IMAGE_NOT_FOUND, dto.Id));
             imageDomain.Update(dto);
             if (imageDomain.Modified)
                 Modify();

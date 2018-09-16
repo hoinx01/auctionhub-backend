@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Modules.Product.Domain.Model.Domain
 {
-    public class ImageDomain : Subdomain
+    public class ImageDomain : Subdomain<ProductDomain>
     {
         public string ImageId { get; set; }
         public string Source { get; set; }

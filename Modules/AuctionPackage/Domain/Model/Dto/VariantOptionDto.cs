@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Modules.Product.Domain.SeedWork;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.Model.Dto
+namespace Modules.Product.Domain.Model.Dto
 {
     public class VariantOptionDto
     {

@@ -11,6 +11,9 @@ namespace AuctionHub.Common.Messages
     }
     public class ProductErrorMessages
     {
-        public const string IMAGE_NOT_FOUND = "Không tồn tại ảnh có id = {0}";
+        public const string PRODUCT_IMAGE_NOT_FOUND = "Không tồn tại ảnh có id = {0}";
+        public const string PRODUCT_OPTION_NOT_FOUND = "Không tồn tại thuộc tính {0} trên sản phẩm";
+
+        public const string PRODUCT_VARIANT_NOT_FOUND = "Không tồn tại mặt hàng có id = {0}";
     }
 }
